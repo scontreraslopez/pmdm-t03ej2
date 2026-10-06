@@ -1,13 +1,17 @@
 package net.iessochoa.sergiocontreras.t03ej2
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.iessochoa.sergiocontreras.t03ej2.ui.theme.T03ej2Theme
 
@@ -18,7 +22,9 @@ fun BirthdayApp(modifier: Modifier = Modifier) {
             GreetingText(
                 message = "Happy Birthday",
                 from = "from Sergio",
-                modifier = Modifier.padding(innerPadding)
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
             )
         }
     }
@@ -27,9 +33,23 @@ fun BirthdayApp(modifier: Modifier = Modifier) {
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        Text(text = message, fontSize = 100.sp, lineHeight = 116.sp)
-        Text(text = from, fontSize = 36.sp)
+    Column(
+        verticalArrangement = Arrangement.Center,   // centra el bloque en vertical
+        modifier = modifier
+    ) {
+        Text(
+            text = message,
+            fontSize = 100.sp,
+            lineHeight = 116.sp,
+            textAlign = TextAlign.Center            // centra el texto dentro de sí mismo
+        )
+        Text(
+            text = from,
+            fontSize = 36.sp,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(alignment = Alignment.End)   // este hijo, a la derecha
+        )
     }
 }
 

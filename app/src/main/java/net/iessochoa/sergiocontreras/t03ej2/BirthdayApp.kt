@@ -1,5 +1,6 @@
 package net.iessochoa.sergiocontreras.t03ej2
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -11,12 +12,12 @@ import androidx.compose.ui.unit.sp
 import net.iessochoa.sergiocontreras.t03ej2.ui.theme.T03ej2Theme
 
 @Composable
-fun BirthdayApp() {
+fun BirthdayApp(modifier: Modifier = Modifier) {
     T03ej2Theme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
             GreetingText(
                 message = "Happy Birthday",
-                from = "Sergio",
+                from = "from Sergio",
                 modifier = Modifier.padding(innerPadding)
             )
         }
@@ -26,12 +27,14 @@ fun BirthdayApp() {
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Text(text = message, fontSize = 100.sp, lineHeight = 116.sp, modifier = modifier)
-    Text(text = from, fontSize = 36.sp)
+    Column(modifier = modifier) {
+        Text(text = message, fontSize = 100.sp, lineHeight = 116.sp)
+        Text(text = from, fontSize = 36.sp)
+    }
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun BirthdayAppPreview() {
     BirthdayApp()
